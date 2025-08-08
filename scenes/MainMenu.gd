@@ -9,7 +9,7 @@ func _on_StartButton_pressed():
 	get_tree().change_scene_to_file("res://scenes/levels/level_0.tscn")
 
 func _on_OptionsButton_pressed():
-	print("Options pressed")
+	$Container.visible = false;
 
 func _on_QuitButton_pressed():
 	get_tree().quit()

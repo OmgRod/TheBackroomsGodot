@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbj0dlwf6gf78"
 path.s3tc="res://.godot/imported/LabelColor.png-0e5a3c2b4e0c3941cb64d98f6fb659df.s3tc.ctex"
+path.etc2="res://.godot/imported/LabelColor.png-0e5a3c2b4e0c3941cb64d98f6fb659df.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://meshes/almond_water/textures/LabelColor.png"
-dest_files=["res://.godot/imported/LabelColor.png-0e5a3c2b4e0c3941cb64d98f6fb659df.s3tc.ctex"]
+dest_files=["res://.godot/imported/LabelColor.png-0e5a3c2b4e0c3941cb64d98f6fb659df.s3tc.ctex", "res://.godot/imported/LabelColor.png-0e5a3c2b4e0c3941cb64d98f6fb659df.etc2.ctex"]
 
 [params]
 
