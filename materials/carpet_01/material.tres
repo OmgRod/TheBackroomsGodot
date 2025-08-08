@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://c8geogyo7x3ub"]
+
+[ext_resource type="Texture2D" uid="uid://dbadpmrgixh3" path="res://materials/carpet_01/Carpet016_1K-PNG_Color.png" id="1_25xxh"]
+[ext_resource type="Texture2D" uid="uid://ce25qdoy35xto" path="res://materials/carpet_01/Carpet016_1K-PNG_AmbientOcclusion.png" id="2_xnhv5"]
+[ext_resource type="Texture2D" uid="uid://c32gs27wnf3q3" path="res://materials/carpet_01/Carpet016_1K-PNG_NormalDX.png" id="3_khkmk"]
+[ext_resource type="Texture2D" uid="uid://droars3oxju1s" path="res://materials/carpet_01/Carpet016_1K-PNG_Displacement.png" id="4_s361c"]
+[ext_resource type="Texture2D" uid="uid://brd5wfov600fj" path="res://materials/carpet_01/Carpet016_1K-PNG_Roughness.png" id="5_bpeww"]
+
+[resource]
+albedo_texture = ExtResource("1_25xxh")
+metallic_specular = 0.0
+roughness_texture = ExtResource("5_bpeww")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 16.0
+normal_texture = ExtResource("3_khkmk")
+ao_enabled = true
+ao_texture = ExtResource("2_xnhv5")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_s361c")
+heightmap_flip_texture = true
+detail_normal = ExtResource("3_khkmk")
+uv1_triplanar = true
+uv1_world_triplanar = true

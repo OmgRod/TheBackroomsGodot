@@ -1,0 +1,231 @@
+[gd_scene load_steps=15 format=3 uid="uid://diwcbjwgfb5pe"]
+
+[ext_resource type="Script" uid="uid://x21tfe2fhknf" path="res://scenes/MainMenu.gd" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://ckgj3tvhfp0si" path="res://fonts/vcr_osd_mono.ttf" id="2_ekxnf"]
+[ext_resource type="Material" uid="uid://c8geogyo7x3ub" path="res://materials/carpet_01/material.tres" id="4_rtw2f"]
+[ext_resource type="Material" uid="uid://d4nfav174l70i" path="res://materials/wallpaper_01/material.tres" id="5_8ln24"]
+[ext_resource type="Material" uid="uid://b0j5eb16lxiw3" path="res://materials/office_ceiling_01/material.tres" id="5_oa1go"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wu84c"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="GDScript" id="GDScript_8ln24"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jk1qb"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5dd4i"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wu84c"]
+sky_top_color = Color(0.336061, 0.447573, 0.652352, 1)
+sky_horizon_color = Color(0.646581, 0.656066, 0.705776, 1)
+ground_bottom_color = Color(0.226807, 0.153235, 0.147296, 1)
+ground_horizon_color = Color(0.646581, 0.656066, 0.705776, 1)
+
+[sub_resource type="Sky" id="Sky_noarx"]
+sky_material = SubResource("ProceduralSkyMaterial_wu84c")
+
+[sub_resource type="Environment" id="Environment_8ln24"]
+background_mode = 2
+sky = SubResource("Sky_noarx")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.025
+
+[sub_resource type="BoxMesh" id="BoxMesh_rtw2f"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oa1go"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="MainMenu" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_wu84c")
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_l6cm7")
+
+[node name="Container" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -64.0
+offset_right = 109.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 125
+alignment = 1
+
+[node name="Logo" type="RichTextLabel" parent="CanvasLayer/Control/Container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/normal_font = ExtResource("2_ekxnf")
+theme_override_font_sizes/normal_font_size = 144
+bbcode_enabled = true
+text = "The Backrooms"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="ButtonContainer" type="VBoxContainer" parent="CanvasLayer/Control/Container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Control/Container/ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 72
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Control/Container/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 72
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Control/Container/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 72
+text = "Exit"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+script = SubResource("GDScript_8ln24")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(2304, 1296)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Floor" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(250, 0, 0, 0, 1, 0, 0, 0, 250, -0.071, -0.5, 0.058)
+material_override = ExtResource("4_rtw2f")
+mesh = SubResource("BoxMesh_jk1qb")
+metadata/MaterialType = "carpet"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Node3D/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D/Floor/StaticBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_5dd4i")
+
+[node name="Ceiling" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(250, 0, 0, 0, 1, 0, 0, 0, 250, -0.049, 4, 0.099)
+material_override = ExtResource("5_oa1go")
+mesh = SubResource("BoxMesh_jk1qb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Node3D/Ceiling"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D/Ceiling/StaticBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_5dd4i")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Node3D"]
+environment = SubResource("Environment_8ln24")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(-0.965926, 0.103507, -0.237221, 0, 0.91655, 0.399921, 0.258819, 0.386294, -0.885319, 1.86265e-08, 4.13982, -3.72529e-08)
+light_color = Color(0.996078, 0.890196, 0, 1)
+shadow_enabled = true
+shadow_normal_bias = 0.0
+shadow_reverse_cull_face = true
+directional_shadow_max_distance = 30.0
+
+[node name="Walls" type="Node3D" parent="SubViewportContainer/SubViewport/Node3D"]
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/Walls"]
+transform = Transform3D(18.5816, 0.00580379, -3.20141e-05, -0.0307841, 3.5031, 0.000492366, 0.0011995, -0.00339089, 0.508604, -33.2363, 1.73685, -4.04274)
+material_override = ExtResource("5_8ln24")
+mesh = SubResource("BoxMesh_rtw2f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Node3D/Walls/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D/Walls/MeshInstance3D5/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_oa1go")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/Walls"]
+transform = Transform3D(0.654553, 0.00575785, -0.000441835, -0.0010844, 3.47537, 0.00679527, 4.22534e-05, -0.00336405, 7.01937, -33.2363, 1.73685, 5.03984)
+material_override = ExtResource("5_8ln24")
+mesh = SubResource("BoxMesh_rtw2f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Node3D/Walls/MeshInstance3D6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D/Walls/MeshInstance3D6/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_oa1go")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/Walls"]
+transform = Transform3D(5.61615, 0.00580084, -4.24965e-05, -0.00930425, 3.50132, 0.000653582, 0.000362539, -0.00338917, 0.675137, -31.9231, 1.73685, 4.65268)
+material_override = ExtResource("5_8ln24")
+mesh = SubResource("BoxMesh_rtw2f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Node3D/Walls/MeshInstance3D7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D/Walls/MeshInstance3D7/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_oa1go")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/Walls"]
+transform = Transform3D(5.52562, 0.00580587, -2.55947e-05, -0.00915428, 3.50435, 0.000393638, 0.000356696, -0.00339211, 0.40662, -33.2363, 1.73685, 14.0224)
+material_override = ExtResource("5_8ln24")
+mesh = SubResource("BoxMesh_rtw2f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Node3D/Walls/MeshInstance3D8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D/Walls/MeshInstance3D8/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_oa1go")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/Walls"]
+transform = Transform3D(9.91079, 0.0058135, -2.55935e-05, -0.0164192, 3.50896, 0.000393619, 0.000639771, -0.00339657, 0.4066, -22.4284, 1.73685, 14.0224)
+material_override = ExtResource("5_8ln24")
+mesh = SubResource("BoxMesh_rtw2f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Node3D/Walls/MeshInstance3D9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D/Walls/MeshInstance3D9/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_oa1go")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1044, 1.82091, 17.4769)

@@ -1,0 +1,193 @@
+[gd_scene load_steps=16 format=3 uid="uid://byy5804ws1q4f"]
+
+[ext_resource type="Script" uid="uid://dqippv7o8q2ko" path="res://Player.gd" id="1_sxr8l"]
+[ext_resource type="Material" uid="uid://c8geogyo7x3ub" path="res://materials/carpet_01/material.tres" id="2_65guy"]
+[ext_resource type="Material" uid="uid://b0j5eb16lxiw3" path="res://materials/office_ceiling_01/material.tres" id="3_osc7o"]
+[ext_resource type="Material" uid="uid://d4nfav174l70i" path="res://materials/wallpaper_01/material.tres" id="4_wjk5u"]
+[ext_resource type="PackedScene" uid="uid://c03rg14evv3cs" path="res://meshes/almond_water.tscn" id="5_xy1qu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
+sky_top_color = Color(0.336061, 0.447573, 0.652352, 1)
+sky_horizon_color = Color(0.646581, 0.656066, 0.705776, 1)
+ground_bottom_color = Color(0.226807, 0.153235, 0.147296, 1)
+ground_horizon_color = Color(0.646581, 0.656066, 0.705776, 1)
+
+[sub_resource type="Sky" id="Sky_xy1qu"]
+sky_material = SubResource("ProceduralSkyMaterial_a202f")
+
+[sub_resource type="Environment" id="Environment_a0tk4"]
+background_mode = 2
+sky = SubResource("Sky_xy1qu")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.025
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4xowi"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a202f"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[sub_resource type="AudioStream" id="AudioStream_xy1qu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bw3rj"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a202f"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gj3kh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ayib"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a0tk4")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_sxr8l")
+
+[node name="Player" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_4xowi")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("ConvexPolygonShape3D_a202f")
+
+[node name="Neck" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Neck"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CharacterBody3D"]
+stream = SubResource("AudioStream_xy1qu")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(250, 0, 0, 0, 1, 0, 0, 0, 250, -0.071, -0.5, 0.058)
+material_override = ExtResource("2_65guy")
+mesh = SubResource("BoxMesh_bw3rj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_a202f")
+
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(250, 0, 0, 0, 1, 0, 0, 0, 250, -0.049, 4, 0.099)
+material_override = ExtResource("3_osc7o")
+mesh = SubResource("BoxMesh_bw3rj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ceiling"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling/StaticBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_a202f")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(14.1821, 0.00581189, -3.3358e-05, -0.0234954, 3.50799, 0.000513034, 0.000915496, -0.00339563, 0.529954, 0, 1.75, 9.842)
+material_override = ExtResource("4_wjk5u")
+mesh = SubResource("BoxMesh_gj3kh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6ayib")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(0.352786, 0.00566946, -0.000786878, -0.00058446, 3.42202, 0.0121019, 2.27734e-05, -0.00331241, 12.501, 6.98953, 1.73685, 9.84323)
+material_override = ExtResource("4_wjk5u")
+mesh = SubResource("BoxMesh_gj3kh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6ayib")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(0.352786, 0.00566946, -0.000786878, -0.00058446, 3.42202, 0.0121019, 2.27734e-05, -0.00331241, 12.501, 1.46895, 1.73685, 11.1802)
+material_override = ExtResource("4_wjk5u")
+mesh = SubResource("BoxMesh_gj3kh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6ayib")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(18.5816, 0.00580379, -3.20141e-05, -0.0307841, 3.5031, 0.000492366, 0.0011995, -0.00339089, 0.508604, 1.46895, 1.73685, 20.3647)
+material_override = ExtResource("4_wjk5u")
+mesh = SubResource("BoxMesh_gj3kh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6ayib")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(18.5816, 0.00580379, -3.20141e-05, -0.0307841, 3.5031, 0.000492366, 0.0011995, -0.00339089, 0.508604, -33.2363, 1.73685, -4.04274)
+material_override = ExtResource("4_wjk5u")
+mesh = SubResource("BoxMesh_gj3kh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D5/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6ayib")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(0.654553, 0.00575785, -0.000441835, -0.0010844, 3.47537, 0.00679527, 4.22534e-05, -0.00336405, 7.01937, -33.2363, 1.73685, 5.03984)
+material_override = ExtResource("4_wjk5u")
+mesh = SubResource("BoxMesh_gj3kh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D6/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6ayib")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(5.61615, 0.00580084, -4.24965e-05, -0.00930425, 3.50132, 0.000653582, 0.000362539, -0.00338917, 0.675137, -31.9231, 1.73685, 4.65268)
+material_override = ExtResource("4_wjk5u")
+mesh = SubResource("BoxMesh_gj3kh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D7/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6ayib")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(5.52562, 0.00580587, -2.55947e-05, -0.00915428, 3.50435, 0.000393638, 0.000356696, -0.00339211, 0.40662, -33.2363, 1.73685, 14.0224)
+material_override = ExtResource("4_wjk5u")
+mesh = SubResource("BoxMesh_gj3kh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D8/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6ayib")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(9.91079, 0.0058135, -2.55935e-05, -0.0164192, 3.50896, 0.000393619, 0.000639771, -0.00339657, 0.4066, -22.4284, 1.73685, 14.0224)
+material_override = ExtResource("4_wjk5u")
+mesh = SubResource("BoxMesh_gj3kh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D9/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6ayib")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.965926, 0.103507, -0.237221, 0, 0.91655, 0.399921, 0.258819, 0.386294, -0.885319, 1.86265e-08, 7.66211, -3.72529e-08)
+light_color = Color(0.996078, 0.890196, 0, 1)
+shadow_enabled = true
+shadow_normal_bias = 0.0
+shadow_reverse_cull_face = true
+directional_shadow_mode = 0
+directional_shadow_max_distance = 30.0
+sky_mode = 1
+
+[node name="AlmondWater" parent="." instance=ExtResource("5_xy1qu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.39527, 1.30224, -0.507701)

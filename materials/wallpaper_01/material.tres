@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://d4nfav174l70i"]
+
+[ext_resource type="Texture2D" uid="uid://bk4fooarowcll" path="res://materials/wallpaper_01/Wallpaper_Backrooms_001_basecolor.png" id="1_25xxh"]
+[ext_resource type="Texture2D" uid="uid://tsn3ptiy62ae" path="res://materials/wallpaper_01/Wallpaper_Backrooms_001_ambientOcclusion.png" id="2_xnhv5"]
+[ext_resource type="Texture2D" uid="uid://d315nvqd63p0y" path="res://materials/wallpaper_01/Wallpaper_Backrooms_001_height.png" id="3_khkmk"]
+[ext_resource type="Texture2D" uid="uid://buhot4bwk2gjt" path="res://materials/wallpaper_01/Wallpaper_Backrooms_001_normal.png" id="4_s361c"]
+[ext_resource type="Texture2D" uid="uid://d3xnjwn8dylvp" path="res://materials/wallpaper_01/Wallpaper_Backrooms_001_roughness.png" id="5_bpeww"]
+
+[resource]
+albedo_texture = ExtResource("1_25xxh")
+roughness_texture = ExtResource("5_bpeww")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("4_s361c")
+ao_enabled = true
+ao_texture = ExtResource("2_xnhv5")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_khkmk")
+uv1_triplanar = true
+uv1_world_triplanar = true

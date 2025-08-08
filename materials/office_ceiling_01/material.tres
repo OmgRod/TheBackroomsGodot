@@ -1,0 +1,27 @@
+[gd_resource type="StandardMaterial3D" load_steps=8 format=3 uid="uid://b0j5eb16lxiw3"]
+
+[ext_resource type="Texture2D" uid="uid://dmay7ml1vmhv4" path="res://materials/office_ceiling_01/OfficeCeiling002_1K-PNG_Color.png" id="1_khkmk"]
+[ext_resource type="Texture2D" uid="uid://dulefh2er7c1v" path="res://materials/office_ceiling_01/OfficeCeiling002_1K-PNG_AmbientOcclusion.png" id="2_s361c"]
+[ext_resource type="Texture2D" uid="uid://dtqxx1fo4sus5" path="res://materials/office_ceiling_01/OfficeCeiling002_1K-PNG_Emission.png" id="3_bpeww"]
+[ext_resource type="Texture2D" uid="uid://0wjb7ui2xcxe" path="res://materials/office_ceiling_01/OfficeCeiling002_1K-PNG_Displacement.png" id="4_5morc"]
+[ext_resource type="Texture2D" uid="uid://cv0gj343u6uff" path="res://materials/office_ceiling_01/OfficeCeiling002_1K-PNG_Metalness.png" id="5_238ff"]
+[ext_resource type="Texture2D" uid="uid://id887wgeen1i" path="res://materials/office_ceiling_01/OfficeCeiling002_1K-PNG_NormalGL.png" id="6_6dr8l"]
+[ext_resource type="Texture2D" uid="uid://cvxhhf6hm2thd" path="res://materials/office_ceiling_01/OfficeCeiling002_1K-PNG_Roughness.png" id="7_0fewm"]
+
+[resource]
+albedo_texture = ExtResource("1_khkmk")
+metallic = 1.0
+metallic_texture = ExtResource("5_238ff")
+roughness_texture = ExtResource("7_0fewm")
+emission_enabled = true
+emission = Color(1, 0.803922, 0.137255, 1)
+emission_texture = ExtResource("3_bpeww")
+normal_enabled = true
+normal_texture = ExtResource("6_6dr8l")
+ao_enabled = true
+ao_texture = ExtResource("2_s361c")
+heightmap_enabled = true
+heightmap_texture = ExtResource("4_5morc")
+uv1_scale = Vector3(0.15, 0.15, 0.15)
+uv1_triplanar = true
+uv1_world_triplanar = true

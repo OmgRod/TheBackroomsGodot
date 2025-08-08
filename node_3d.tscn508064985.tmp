@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://byy5804ws1q4f"]
+
+[ext_resource type="Script" uid="uid://cu6dfqchcoovh" path="res://camera-controls.gd" id="1_a202f"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4xowi"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_4xowi"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_4xowi")
+
+[node name="Camera" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.51)
+script = ExtResource("1_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.63934, 0, 0, 0, 0.189419, -2.07928, 0, 0.496585, 0.793127, 0, 0, -9.11369)
+mesh = SubResource("TorusMesh_4xowi")
