@@ -55,7 +55,7 @@ jobs:
 
       # 5. Upload artifacts
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: GodotBuild-${{ matrix.os }}
           path: build/
