@@ -69,9 +69,9 @@ justification_flags = 128
 [node name="ObjectLabel" type="RichTextLabel" parent="Background"]
 layout_mode = 0
 offset_left = 100.0
-offset_top = 10.0
+offset_top = 20.0
 offset_right = 280.0
-offset_bottom = 40.0
+offset_bottom = 45.0
 theme_override_fonts/normal_font = ExtResource("2_8x24m")
 theme_override_font_sizes/normal_font_size = 18
 text = "Door"
@@ -80,9 +80,9 @@ vertical_alignment = 1
 [node name="ActionLabel" type="RichTextLabel" parent="Background"]
 layout_mode = 0
 offset_left = 100.0
-offset_top = 50.0
+offset_top = 45.0
 offset_right = 280.0
-offset_bottom = 90.0
+offset_bottom = 80.0
 theme_override_fonts/normal_font = ExtResource("1_xdxkh")
 theme_override_font_sizes/normal_font_size = 24
 text = "Open"

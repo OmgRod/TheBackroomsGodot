@@ -83,7 +83,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_a202f")
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
-transform = Transform3D(250, 0, 0, 0, 1, 0, 0, 0, 250, -0.0380825, 4.16246, 0.193688)
+transform = Transform3D(250, 0, 0, 0, 1, 0, 0, 0, 250, 0, 4, 0)
 material_override = ExtResource("3_osc7o")
 mesh = SubResource("BoxMesh_bw3rj")
 
