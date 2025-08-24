@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0doliinisgbi"]
+[gd_scene load_steps=4 format=3 uid="uid://b0doliinisgbi"]
 
 [ext_resource type="Script" uid="uid://ddd6ssp5wp4mo" path="res://scripts/SanityBar.gd" id="1_ahhtf"]
 [ext_resource type="FontFile" uid="uid://ckgj3tvhfp0si" path="res://fonts/vcr_osd_mono.ttf" id="2_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://dwvwq6a0p1yu4" path="res://textures/crosshair.png" id="3_5ysmq"]
 
 [node name="HUD" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Bars" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -18,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="SanityBar" type="Control" parent="CanvasLayer/Control"]
+[node name="SanityBar" type="Control" parent="CanvasLayer/Bars"]
 anchors_preset = 0
 offset_left = -1000.0
 offset_top = -200.0
@@ -26,7 +27,7 @@ offset_right = -250.0
 offset_bottom = -100.0
 script = ExtResource("1_ahhtf")
 
-[node name="Border" type="ColorRect" parent="CanvasLayer/Control/SanityBar"]
+[node name="Border" type="ColorRect" parent="CanvasLayer/Bars/SanityBar"]
 layout_mode = 2
 offset_left = -10.0
 offset_top = -10.0
@@ -36,20 +37,20 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.294118, 0.294118, 0, 1)
 
-[node name="Background" type="ColorRect" parent="CanvasLayer/Control/SanityBar"]
+[node name="Background" type="ColorRect" parent="CanvasLayer/Bars/SanityBar"]
 custom_minimum_size = Vector2(750, 100)
 layout_mode = 2
 offset_right = 750.0
 offset_bottom = 100.0
 color = Color(0.498039, 0.498039, 0, 1)
 
-[node name="FillBar" type="ColorRect" parent="CanvasLayer/Control/SanityBar"]
+[node name="FillBar" type="ColorRect" parent="CanvasLayer/Bars/SanityBar"]
 layout_mode = 2
 offset_right = 375.0
 offset_bottom = 100.0
 color = Color(1, 1, 0, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/SanityBar"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Bars/SanityBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,7 +70,7 @@ justification_flags = 161
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="HealthBar" type="Control" parent="CanvasLayer/Control"]
+[node name="HealthBar" type="Control" parent="CanvasLayer/Bars"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1000.0
@@ -78,7 +79,7 @@ offset_right = -250.0
 offset_bottom = -250.0
 script = ExtResource("1_ahhtf")
 
-[node name="Border" type="ColorRect" parent="CanvasLayer/Control/HealthBar"]
+[node name="Border" type="ColorRect" parent="CanvasLayer/Bars/HealthBar"]
 layout_mode = 2
 offset_left = -10.0
 offset_top = -10.0
@@ -88,20 +89,20 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.294118, 0, 0, 1)
 
-[node name="Background" type="ColorRect" parent="CanvasLayer/Control/HealthBar"]
+[node name="Background" type="ColorRect" parent="CanvasLayer/Bars/HealthBar"]
 custom_minimum_size = Vector2(750, 100)
 layout_mode = 2
 offset_right = 750.0
 offset_bottom = 100.0
 color = Color(0.498039, 0, 0, 1)
 
-[node name="FillBar" type="ColorRect" parent="CanvasLayer/Control/HealthBar"]
+[node name="FillBar" type="ColorRect" parent="CanvasLayer/Bars/HealthBar"]
 layout_mode = 2
 offset_right = 375.0
 offset_bottom = 100.0
 color = Color(1, 0, 0, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/HealthBar"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Bars/HealthBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,3 +121,20 @@ vertical_alignment = 1
 justification_flags = 161
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="Crosshair" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Crosshair"]
+texture = ExtResource("3_5ysmq")
