@@ -6,7 +6,7 @@ func _ready():
 	$Container/ButtonContainer/ExitButton.pressed.connect(_on_QuitButton_pressed)
 
 func _on_StartButton_pressed():
-	get_tree().change_scene_to_file("res://scenes/levels/level_0.tscn")
+	get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
 
 func _on_OptionsButton_pressed():
 	$Container.visible = false;

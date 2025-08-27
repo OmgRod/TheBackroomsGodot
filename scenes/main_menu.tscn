@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://diwcbjwgfb5pe"]
+[gd_scene load_steps=23 format=3 uid="uid://diwcbjwgfb5pe"]
 
 [ext_resource type="Script" uid="uid://x21tfe2fhknf" path="res://scenes/MainMenu.gd" id="1_l6cm7"]
+[ext_resource type="Shader" uid="uid://cv8l6hsdq1pbo" path="res://shader.gdshader" id="1_rtw2f"]
 [ext_resource type="FontFile" uid="uid://ckgj3tvhfp0si" path="res://fonts/vcr_osd_mono.ttf" id="2_ekxnf"]
 [ext_resource type="Material" uid="uid://c8geogyo7x3ub" path="res://materials/carpet_01/material.tres" id="4_rtw2f"]
 [ext_resource type="Material" uid="uid://d4nfav174l70i" path="res://materials/wallpaper_01/material.tres" id="5_8ln24"]
 [ext_resource type="Material" uid="uid://b0j5eb16lxiw3" path="res://materials/office_ceiling_01/material.tres" id="5_oa1go"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_wu84c"]
-viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="GDScript" id="GDScript_8ln24"]
 
@@ -39,91 +37,85 @@ fog_density = 0.025
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oa1go"]
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oa1go"]
+shader = ExtResource("1_rtw2f")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wu84c"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtw2f"]
+bg_color = Color(0, 0.498039, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.294118, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
+bg_color = Color(0, 1, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.294118, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmy8"]
+bg_color = Color(0.392157, 0.392157, 0.392157, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.294118, 0.294118, 0.294118, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jk1qb"]
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.294118, 0.294118, 0.294118, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dd4i"]
+bg_color = Color(0.498039, 0.498039, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.294118, 0.294118, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgwnu"]
+bg_color = Color(0.784314, 0.784314, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.294118, 0.294118, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="MainMenu" type="Node"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_wu84c")
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("1_l6cm7")
-
-[node name="Container" type="VBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -109.0
-offset_top = -64.0
-offset_right = 109.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 125
-alignment = 1
-
-[node name="Logo" type="RichTextLabel" parent="CanvasLayer/Control/Container"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/normal_font = ExtResource("2_ekxnf")
-theme_override_font_sizes/normal_font_size = 144
-bbcode_enabled = true
-text = "The Backrooms"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-shortcut_keys_enabled = false
-horizontal_alignment = 1
-vertical_alignment = 1
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="ButtonContainer" type="VBoxContainer" parent="CanvasLayer/Control/Container"]
-layout_mode = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="StartButton" type="Button" parent="CanvasLayer/Control/Container/ButtonContainer"]
-layout_mode = 2
-size_flags_vertical = 7
-theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 72
-text = "Start Game"
-
-[node name="OptionsButton" type="Button" parent="CanvasLayer/Control/Container/ButtonContainer"]
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 7
-theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 72
-text = "Options"
-
-[node name="ExitButton" type="Button" parent="CanvasLayer/Control/Container/ButtonContainer"]
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 7
-theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 72
-text = "Exit"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -229,3 +221,105 @@ shape = SubResource("ConvexPolygonShape3D_oa1go")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1044, 1.82091, 17.4769)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_oa1go")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_wu84c")
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_l6cm7")
+
+[node name="Container" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -64.0
+offset_right = 109.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 125
+alignment = 1
+
+[node name="Logo" type="RichTextLabel" parent="CanvasLayer/Control/Container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/normal_font = ExtResource("2_ekxnf")
+theme_override_font_sizes/normal_font_size = 144
+bbcode_enabled = true
+text = "The Backrooms"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="ButtonContainer" type="VBoxContainer" parent="CanvasLayer/Control/Container"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Control/Container/ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/hover = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_oa1go")
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Control/Container/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/hover = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jk1qb")
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Control/Container/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/hover = SubResource("StyleBoxFlat_5dd4i")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lgwnu")
+text = "Exit"

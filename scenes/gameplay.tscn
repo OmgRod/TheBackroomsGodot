@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcpo8u667cf7k"]
+
+[ext_resource type="PackedScene" uid="uid://byy5804ws1q4f" path="res://scenes/levels/level_0.tscn" id="1_l1v76"]
+[ext_resource type="Shader" uid="uid://cv8l6hsdq1pbo" path="res://shader.gdshader" id="2_ct7aa"]
+[ext_resource type="PackedScene" uid="uid://b0doliinisgbi" path="res://scenes/hud.tscn" id="3_ocj2s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_din8e"]
+shader = ExtResource("2_ct7aa")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4bh5q"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 2304.0
+offset_bottom = 1296.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(2304, 1296)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_l1v76")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_din8e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_4bh5q")
+
+[node name="HUD2" parent="." instance=ExtResource("3_ocj2s")]
