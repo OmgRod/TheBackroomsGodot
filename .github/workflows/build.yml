@@ -1,0 +1,69 @@
+name: Build Godot Game
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      # 1. Checkout repository
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # 2. Setup Godot (download CLI version)
+      - name: Setup Godot
+        shell: bash
+        run: |
+          GODOT_VERSION=4.3.2
+
+          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
+            wget https://downloads.tuxfamily.org/godotengine/$GODOT_VERSION/Godot_v$GODOT_VERSION-stable_linux.x86_64.zip
+            unzip Godot_v$GODOT_VERSION-stable_linux.x86_64.zip
+            chmod +x Godot_v$GODOT_VERSION-stable_linux.x86_64
+            mv Godot_v$GODOT_VERSION-stable_linux.x86_64 godot
+
+          elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
+            wget https://downloads.tuxfamily.org/godotengine/$GODOT_VERSION/Godot_v$GODOT_VERSION-stable_macos.universal.zip
+            unzip Godot_v$GODOT_VERSION-stable_macos.universal.zip
+            chmod +x Godot.app/Contents/MacOS/Godot
+            mv Godot.app/Contents/MacOS/Godot godot
+
+          elif [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            curl -L -o Godot.zip https://downloads.tuxfamily.org/godotengine/$GODOT_VERSION/Godot_v$GODOT_VERSION-stable_win64.exe.zip
+            unzip Godot.zip
+            mv Godot_v$GODOT_VERSION-stable_win64.exe godot.exe
+          fi
+
+      # 3. Create build folder
+      - name: Create build folder
+        shell: bash
+        run: mkdir -p build
+
+      # 4. Export game based on OS
+      - name: Export
+        shell: bash
+        run: |
+          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
+            ./godot --headless --export "Linux/X11" build/linux_game.x86_64
+
+          elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
+            ./godot --headless --export "macOS" build/mac_game.app
+
+          elif [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            ./godot.exe --headless --export "Windows Desktop" build/windows_game.exe
+          fi
+
+      # 5. Upload build artifacts
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: GodotBuild-${{ matrix.os }}
+          path: build/

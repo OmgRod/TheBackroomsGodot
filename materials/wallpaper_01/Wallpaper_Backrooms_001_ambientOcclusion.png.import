@@ -3,17 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tsn3ptiy62ae"
-path.s3tc="res://.godot/imported/Wallpaper_Backrooms_001_ambientOcclusion.png-ffe31f6371651e7cc5d0f908efb91b26.s3tc.ctex"
 path.etc2="res://.godot/imported/Wallpaper_Backrooms_001_ambientOcclusion.png-ffe31f6371651e7cc5d0f908efb91b26.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://materials/wallpaper_01/Wallpaper_Backrooms_001_ambientOcclusion.png"
-dest_files=["res://.godot/imported/Wallpaper_Backrooms_001_ambientOcclusion.png-ffe31f6371651e7cc5d0f908efb91b26.s3tc.ctex", "res://.godot/imported/Wallpaper_Backrooms_001_ambientOcclusion.png-ffe31f6371651e7cc5d0f908efb91b26.etc2.ctex"]
+dest_files=["res://.godot/imported/Wallpaper_Backrooms_001_ambientOcclusion.png-ffe31f6371651e7cc5d0f908efb91b26.etc2.ctex"]
 
 [params]
 

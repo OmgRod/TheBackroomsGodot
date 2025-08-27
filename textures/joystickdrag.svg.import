@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbadpmrgixh3"
-path.etc2="res://.godot/imported/Carpet016_1K-PNG_Color.png-0f81a7e6bfa82797e028fdc8a8d8bd98.etc2.ctex"
+uid="uid://bijnkgdqop6gj"
+path="res://.godot/imported/joystickdrag.svg-4d3aa57ac6c525551ce1a3469d2f5024.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://materials/carpet_01/Carpet016_1K-PNG_Color.png"
-dest_files=["res://.godot/imported/Carpet016_1K-PNG_Color.png-0f81a7e6bfa82797e028fdc8a8d8bd98.etc2.ctex"]
+source_file="res://textures/joystickdrag.svg"
+dest_files=["res://.godot/imported/joystickdrag.svg-4d3aa57ac6c525551ce1a3469d2f5024.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,7 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
